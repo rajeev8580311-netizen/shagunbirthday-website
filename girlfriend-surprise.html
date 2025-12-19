@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffdee9, #b5fffc);
+  overflow-x: hidden;
+}
+
+section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4rem;
+  color: #ff4d6d;
+}
+
+.hero p {
+  margin: 20px 0;
+}
+
+.btn {
+  padding: 12px 30px;
+  background: #ff4d6d;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.photo img {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.card {
+  max-width: 700px;
+  margin: auto;
+  background: rgba(255,255,255,0.85);
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+video {
+  width: 90%;
+  max-width: 700px;
+  border-radius: 20px;
+}
+
+/* 💖 SIDE LOVE SECTION */
+.love-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1000px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.love-section img {
+  width: 320px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.love-text {
+  max-width: 450px;
+  background: rgba(255,255,255,0.85);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: left;
+}
+
+.love-text h2 {
+  color: #ff4d6d;
+  margin-bottom: 15px;
+}
+
+footer {
+  padding: 40px;
+  background: #ff4d6d;
+  color: white;
+}
+
+/* 🌹 Falling Effects */
+.rose, .heart, .sparkle {
+  position: fixed;
+  top: -50px;
+  pointer-events: none;
+  animation: fall linear forwards;
+  z-index: 9999;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <h1>Happy Birthday Shagun ❤️</h1>
+  <p>This little page is made only for you</p>
+  <a href="#photo" class="btn" id="startSurprise">🎁 Start Surprise</a>
+</section>
+
+<section id="photo" class="photo">
+  <img src="1styash.jpeg">
+  <p>The most beautiful part of my world ✨</p>
+</section>
+
+<section>
+  <div class="card">
+    <h2>My Birthday Wish 💌</h2>
+    <p>You make my life brighter just by being in it.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Our Beautiful Memories 📸</h2>
+  <div class="gallery">
+    <img src="3rdyash.jpeg">
+    <img src="4thyash.jpeg">
+    <img src="5thyash.jpeg">
+  </div>
+</section>
+
+<section>
+  <h2>A Message From My Heart 🎥</h2>
+  <video id="loveVideo" controls>
+    <source src="romantic.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- 💖 NEW LOVE THOUGHTS SECTION (AFTER VIDEO) -->
+<section>
+  <div class="love-section">
+    <img src="2ndyash.jpeg" alt="Love Image">
+    <div class="love-text">
+      <h2>Only You 💖</h2>
+      <p>
+        Loving you is the easiest and most beautiful thing I’ve ever done.  
+        You are my comfort, my happiness, and my forever dream.  
+        No matter where life takes us, my heart will always choose you. 💫
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <h2>Forever & Always 💖</h2>
+    <p>I promise to always stand by you.</p>
+  </div>
+</section>
+
+<footer>
+  Made with ❤️ just for you
+</footer>
+
+<!-- 🎂 HAPPY BIRTHDAY SONG -->
+<audio id="birthdaySong" preload="auto">
+  <source src="happy-birthday.mp3.weba" type="audio/mp3">
+</audio>
+
+<script>
+let started = false;
+const song = document.getElementById("birthdaySong");
+const video = document.getElementById("loveVideo");
+
+document.getElementById("startSurprise").addEventListener("click", () => {
+  if (started) return;
+  started = true;
+
+  song.volume = 0.8;
+  song.play().catch(()=>{});
+
+  setInterval(() => createEffect("🌹", "rose", 28), 250);
+  setInterval(() => createEffect("💖", "heart", 24), 400);
+  setInterval(() => createEffect("✨", "sparkle", 16), 600);
+});
+
+video.addEventListener("play", () => {
+  song.pause();
+});
+
+video.addEventListener("ended", () => {
+  song.play().catch(()=>{});
+});
+
+function createEffect(symbol, className, size) {
+  const el = document.createElement("div");
+  el.className = className;
+  el.innerText = symbol;
+  el.style.left = Math.random() * window.innerWidth + "px";
+  el.style.fontSize = size + "px";
+  el.style.animationDuration = Math.random() * 3 + 5 + "s";
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 9000);
+}
+</script>
+
+</body>
+</html>
